@@ -12,7 +12,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: config_5.10
   MOD_FEEDS: feeds.sh
   MOD_CONFIG: config.sh
   UPLOAD_FIRMWARE: true
