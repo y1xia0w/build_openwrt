@@ -7,12 +7,16 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+      kernel:
+        description: "Kernel version"
+        required: false
+        default: "5.10"
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config_5.4
+  CONFIG_FILE: github.event.inputs.kernel
   MOD_FEEDS: feeds.sh
   MOD_CONFIG: config.sh
   UPLOAD_FIRMWARE: true
