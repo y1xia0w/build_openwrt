@@ -70,6 +70,7 @@ jobs:
     - name: Load custom configuration to .config
       run: |
         [ -e files ] && mv files openwrt/files
+        cd openwrt && make defconfig && cd ..
         chmod +x $MOD_CONFIG
         cd openwrt
         $GITHUB_WORKSPACE/$MOD_CONFIG
