@@ -70,7 +70,6 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         mv ${{github.event.inputs.kernel}} openwrt/.config
-        cat openwrt/.config
         chmod +x $MOD_CONFIG
         cd openwrt
         $GITHUB_WORKSPACE/$MOD_CONFIG
@@ -87,7 +86,6 @@ jobs:
       run: |
         cd openwrt
         make defconfig
-        cat .config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
