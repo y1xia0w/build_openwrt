@@ -15,7 +15,6 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: github.event.inputs.kernel
   MOD_FEEDS: feeds.sh
   MOD_CONFIG: config.sh
@@ -53,7 +52,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
-    - name: Load custom feeds and .config
+    - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $MOD_FEEDS
@@ -70,9 +69,11 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cat openwrt/.config
         chmod +x $MOD_CONFIG
         cd openwrt
         $GITHUB_WORKSPACE/$MOD_CONFIG
+        cat .config
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -87,6 +88,7 @@ jobs:
         cd openwrt
         cat .config
         make defconfig
+        cat .config
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
