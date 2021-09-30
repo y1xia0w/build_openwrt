@@ -56,7 +56,6 @@ jobs:
     - name: Load custom feeds and .config
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $MOD_FEEDS
         cd openwrt
         $GITHUB_WORKSPACE/$MOD_FEEDS
@@ -70,6 +69,7 @@ jobs:
     - name: Load custom configuration to .config
       run: |
         [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $MOD_CONFIG
         cd openwrt
         $GITHUB_WORKSPACE/$MOD_CONFIG
