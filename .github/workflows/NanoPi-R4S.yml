@@ -16,6 +16,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
   CONFIG_FILE: github.event.inputs.kernel
+  FEEDS_CONF: feeds.conf.default
   MOD_FEEDS: feeds.sh
   MOD_CONFIG: config.sh
   UPLOAD_FIRMWARE: true
