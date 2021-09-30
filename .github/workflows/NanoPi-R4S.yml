@@ -15,7 +15,6 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: master
-  CONFIG_FILE: github.event.inputs.kernel
   FEEDS_CONF: feeds.conf.default
   MOD_FEEDS: feeds.sh
   MOD_CONFIG: config.sh
@@ -34,7 +33,9 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        echo $CONFIG_FILE
+        echo github.event.inputs.kernel
+        echo (github.event.inputs.kernel)
+        echo $(github.event.inputs.kernel)
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install build-essential ccache ecj fastjar file g++ gawk \
@@ -70,7 +71,7 @@ jobs:
     - name: Load custom configuration to .config
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        mv (github.event.inputs.kernel) openwrt/.config
         cat openwrt/.config
         chmod +x $MOD_CONFIG
         cd openwrt
