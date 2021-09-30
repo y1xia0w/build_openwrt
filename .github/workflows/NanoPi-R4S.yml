@@ -34,7 +34,6 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         echo github.event.inputs.kernel
-        echo (github.event.inputs.kernel)
         echo $(github.event.inputs.kernel)
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
