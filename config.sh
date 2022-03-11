@@ -7,5 +7,5 @@ echo "CONFIG_PACKAGE_luci-app-openclash=y" >> .config
 #git clone https://github.com/small-5/luci-app-adblock-plus ../luci-app-adblock-plus && ln -s ../../luci-app-adblock-plus package/
 #echo "CONFIG_PACKAGE_luci-app-adblock-plus=y" >> .config
 
-git clone https://github.com/kongfl888/luci-app-adguardhome ../luci-app-adguardhome && ln -s ../../luci-app-adguardhome package/
-echo "CONFIG_PACKAGE_luci-app-adguardhome=y" >> .config
+#git clone https://github.com/kongfl888/luci-app-adguardhome ../luci-app-adguardhome && ln -s ../../luci-app-adguardhome package/
+#echo "CONFIG_PACKAGE_luci-app-adguardhome=y" >> .config
