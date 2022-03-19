@@ -65,10 +65,8 @@ jobs:
     - name: Load custom configuration to .config
       run: |
         [ -e files ] && mv files openwrt/files
-        mv diffconfig openwrt/.config
+        mv 5.10 openwrt/.config
         chmod +x $MOD_CONFIG
-        cd openwrt
-        make defconfig
         $GITHUB_WORKSPACE/$MOD_CONFIG
         
     - name: SSH connection to Actions
