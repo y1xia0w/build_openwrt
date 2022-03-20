@@ -67,6 +67,7 @@ jobs:
         [ -e files ] && mv files openwrt/files
         mv 5.10 openwrt/.config
         chmod +x $MOD_CONFIG
+        cd openwrt
         $GITHUB_WORKSPACE/$MOD_CONFIG
         
     - name: SSH connection to Actions
